@@ -61,8 +61,8 @@ namespace ProgramadorBBB
                 atleta.updatBds(ref bdsDados, "PPSelUsuarios", "");
 
                 cmfw.CriaGrid(ref dtgDados, "Cod", "CodUsuario", 40, DataGridViewContentAlignment.MiddleCenter);
-                cmfw.CriaGrid(ref dtgDados, "Usuario", "NomUsuario", 350);
-                cmfw.CriaGrid(ref dtgDados, "Login", "TxtLogin", 300);
+                cmfw.CriaGrid(ref dtgDados, "Usuario", "NomUsuario", 363);
+                cmfw.CriaGrid(ref dtgDados, "Login", "TxtLogin", 363);
                 cmfw.CriaGrid(ref dtgDados, "GP", "DomGrupo", 55, DataGridViewContentAlignment.MiddleCenter);
                 cmfw.CriaGrid(ref dtgDados, "Ativo", "DomAtivo", 55, DataGridViewContentAlignment.MiddleCenter);
 
