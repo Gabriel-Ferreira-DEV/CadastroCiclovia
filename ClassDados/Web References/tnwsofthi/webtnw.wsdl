@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.tnwsoftware.com.br/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.tnwsoftware.com.br/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.tnwsoftware.com.br/">
+      <s:element name="upload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sArquivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sHash" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bDados" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="uploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uploadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SegurancaClientes" type="tns:SegurancaClientes" />
+      <s:complexType name="SegurancaClientes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="download">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sArquivo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="downloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="downloadResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelRpt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sReport" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sParamRpt" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SelRptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelRptResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelRptTeste">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sReport" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelRptTesteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelRptTesteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelCmd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sProc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelCmdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelCmdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelCmdZ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sProc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelCmdZResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelCmdZResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valcmd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sProc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValcmdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValcmdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Proccmd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sProc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProccmdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProccmdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDistribuicao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sApp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDistribuicaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDistribuicaoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updVol">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sParam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updVolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updVolResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sApp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sArquivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getHashResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="uploadSoapIn">
+    <wsdl:part name="parameters" element="tns:upload" />
+  </wsdl:message>
+  <wsdl:message name="uploadSoapOut">
+    <wsdl:part name="parameters" element="tns:uploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="uploadSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="downloadSoapIn">
+    <wsdl:part name="parameters" element="tns:download" />
+  </wsdl:message>
+  <wsdl:message name="downloadSoapOut">
+    <wsdl:part name="parameters" element="tns:downloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="downloadSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="SelRptSoapIn">
+    <wsdl:part name="parameters" element="tns:SelRpt" />
+  </wsdl:message>
+  <wsdl:message name="SelRptSoapOut">
+    <wsdl:part name="parameters" element="tns:SelRptResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelRptSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="SelRptTesteSoapIn">
+    <wsdl:part name="parameters" element="tns:SelRptTeste" />
+  </wsdl:message>
+  <wsdl:message name="SelRptTesteSoapOut">
+    <wsdl:part name="parameters" element="tns:SelRptTesteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelRptTesteSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="SelCmdSoapIn">
+    <wsdl:part name="parameters" element="tns:SelCmd" />
+  </wsdl:message>
+  <wsdl:message name="SelCmdSoapOut">
+    <wsdl:part name="parameters" element="tns:SelCmdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelCmdSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="SelCmdZSoapIn">
+    <wsdl:part name="parameters" element="tns:SelCmdZ" />
+  </wsdl:message>
+  <wsdl:message name="SelCmdZSoapOut">
+    <wsdl:part name="parameters" element="tns:SelCmdZResponse" />
+  </wsdl:message>
+  <wsdl:message name="SelCmdZSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="ValcmdSoapIn">
+    <wsdl:part name="parameters" element="tns:Valcmd" />
+  </wsdl:message>
+  <wsdl:message name="ValcmdSoapOut">
+    <wsdl:part name="parameters" element="tns:ValcmdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValcmdSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="ProccmdSoapIn">
+    <wsdl:part name="parameters" element="tns:Proccmd" />
+  </wsdl:message>
+  <wsdl:message name="ProccmdSoapOut">
+    <wsdl:part name="parameters" element="tns:ProccmdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProccmdSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="getDistribuicaoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDistribuicao" />
+  </wsdl:message>
+  <wsdl:message name="getDistribuicaoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDistribuicaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDistribuicaoSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="updStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:updStatus" />
+  </wsdl:message>
+  <wsdl:message name="updStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:updStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="updStatusSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="updVolSoapIn">
+    <wsdl:part name="parameters" element="tns:updVol" />
+  </wsdl:message>
+  <wsdl:message name="updVolSoapOut">
+    <wsdl:part name="parameters" element="tns:updVolResponse" />
+  </wsdl:message>
+  <wsdl:message name="updVolSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:message name="getHashSoapIn">
+    <wsdl:part name="parameters" element="tns:getHash" />
+  </wsdl:message>
+  <wsdl:message name="getHashSoapOut">
+    <wsdl:part name="parameters" element="tns:getHashResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHashSegurancaClientes">
+    <wsdl:part name="SegurancaClientes" element="tns:SegurancaClientes" />
+  </wsdl:message>
+  <wsdl:portType name="ServicetnwSoap">
+    <wsdl:operation name="upload">
+      <wsdl:input message="tns:uploadSoapIn" />
+      <wsdl:output message="tns:uploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="download">
+      <wsdl:input message="tns:downloadSoapIn" />
+      <wsdl:output message="tns:downloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelRpt">
+      <wsdl:input message="tns:SelRptSoapIn" />
+      <wsdl:output message="tns:SelRptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelRptTeste">
+      <wsdl:input message="tns:SelRptTesteSoapIn" />
+      <wsdl:output message="tns:SelRptTesteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelCmd">
+      <wsdl:input message="tns:SelCmdSoapIn" />
+      <wsdl:output message="tns:SelCmdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SelCmdZ">
+      <wsdl:input message="tns:SelCmdZSoapIn" />
+      <wsdl:output message="tns:SelCmdZSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valcmd">
+      <wsdl:input message="tns:ValcmdSoapIn" />
+      <wsdl:output message="tns:ValcmdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Proccmd">
+      <wsdl:input message="tns:ProccmdSoapIn" />
+      <wsdl:output message="tns:ProccmdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDistribuicao">
+      <wsdl:input message="tns:getDistribuicaoSoapIn" />
+      <wsdl:output message="tns:getDistribuicaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updStatus">
+      <wsdl:input message="tns:updStatusSoapIn" />
+      <wsdl:output message="tns:updStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updVol">
+      <wsdl:input message="tns:updVolSoapIn" />
+      <wsdl:output message="tns:updVolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getHash">
+      <wsdl:input message="tns:getHashSoapIn" />
+      <wsdl:output message="tns:getHashSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicetnwSoap" type="tns:ServicetnwSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="upload">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/upload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:uploadSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="download">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/download" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:downloadSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelRpt">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/SelRpt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SelRptSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelRptTeste">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/SelRptTeste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SelRptTesteSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelCmd">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/SelCmd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SelCmdSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelCmdZ">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/SelCmdZ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SelCmdZSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valcmd">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/Valcmd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValcmdSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Proccmd">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/Proccmd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ProccmdSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDistribuicao">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/getDistribuicao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getDistribuicaoSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updStatus">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/updStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:updStatusSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updVol">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/updVol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:updVolSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHash">
+      <soap:operation soapAction="http://www.tnwsoftware.com.br/getHash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getHashSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicetnwSoap12" type="tns:ServicetnwSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="upload">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/upload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:uploadSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="download">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/download" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:downloadSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelRpt">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/SelRpt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SelRptSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelRptTeste">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/SelRptTeste" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SelRptTesteSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelCmd">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/SelCmd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SelCmdSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelCmdZ">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/SelCmdZ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SelCmdZSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valcmd">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/Valcmd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValcmdSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Proccmd">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/Proccmd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ProccmdSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDistribuicao">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/getDistribuicao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getDistribuicaoSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updStatus">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/updStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:updStatusSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updVol">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/updVol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:updVolSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHash">
+      <soap12:operation soapAction="http://www.tnwsoftware.com.br/getHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getHashSegurancaClientes" part="SegurancaClientes" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Servicetnw">
+    <wsdl:port name="ServicetnwSoap" binding="tns:ServicetnwSoap">
+      <soap:address location="http://newtesc.sytes.net:4431/wservernwt_monjudiai/webtnw.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicetnwSoap12" binding="tns:ServicetnwSoap12">
+      <soap12:address location="http://newtesc.sytes.net:4431/wservernwt_monjudiai/webtnw.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
